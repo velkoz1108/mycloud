@@ -16,7 +16,10 @@ public class HelloService {
 
     @HystrixCommand(fallbackMethod = "hiError") //断路由
     public String hiService(String name) {
-        return restTemplate.getForObject("http://SERVICE-HI/hi?name=" + name, String.class);
+//        String body = restTemplate.getForEntity("http://HELLO-SERVICE/hello", String.class).getBody();
+//        System.out.println("body = " + body);
+        //如果配置文件中配置了以ip形式注册服务，这里就不行了，找不到服务
+        return restTemplate.getForObject("http://HELLO-SERVER/hello", String.class);
     }
 
     public String hiError(String name) {
