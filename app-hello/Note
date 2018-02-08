@@ -1,0 +1,8 @@
+#访问配置服务中心的用户名密码,当配置中心配置了security时需要，并且用户名密码一致
+spring.cloud.config.username=admin
+spring.cloud.config.password=admin
+
+当启用的security时，将这些字段直接写在application.properties里面无法获取对应的配置文件，
+放入bootstrap.yml或者bootstrap.properties中有效
+
+bootstrap.properties的加载是先于application.properties的

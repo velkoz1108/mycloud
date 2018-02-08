@@ -57,3 +57,9 @@ spring cloud some test
 #2018-2-8 对称密钥 不知道是不是版本问题
 1、springBootVersion = '1.4.5.RELEASE' spring-cloud-dependencies:Camden.SR7 可以使用
 2、springBootVersion = '1.5.9.RELEASE' spring-cloud-dependencies:Edgware.SR1 无法使用
+
+3、curl的安装
+命令行加密
+curl.exe @localhost:8888/encrypt -d mypassword
+如果配置了security之后需要加上用户名和密码去访问，不然会报没权限的错
+curl.exe admin:admin@localhost:8888/encrypt -d mypassword
