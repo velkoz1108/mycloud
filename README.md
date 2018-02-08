@@ -23,3 +23,37 @@ spring cloud some test
     @MatrixParam (用来绑定包含多个property(属性)=value(值)方法参数表达式)
     @FormParam   (http form表单)
     分别表示参数来自Http请求的不同位置
+
+
+#2018-2-7
+1、控制台输出彩色日志
+启动参数中有-Dspring.output.ansi.enabled=always  在配置文件application.properties 中加入 spring.output.ansi.enabled=always
+2、WEB页面获取配置文件config-client-dev.properties内容
+    http://wangtao:8888/config-client-dev.json          ---> {"democonfigclient":{"message":"hello spring io"},"foo":"foo from wt git 22"}
+    http://wangtao:8888/config-client-dev.properties    --->  democonfigclient.message: hello spring io
+                                                              foo: foo from wt git 22
+    http://wangtao:8888/config-client/dev/master        ---> <Environment>
+                                                             <name>config-client</name>
+                                                             <profiles>
+                                                             <profiles>dev</profiles>
+                                                             </profiles>
+                                                             <label>master</label>
+                                                             <version>a7ef3d2801d22eae045ef8c672cc45b7a6ffacfc</version>
+                                                             <state/>
+                                                             <propertySources>
+                                                             <propertySources>
+                                                             <name>
+                                                             https://github.com/velkoz1108/mycloud/config-git/config-client-dev.properties
+                                                             </name>
+                                                             <source>
+                                                             <democonfigclient.message>hello spring io</democonfigclient.message>
+                                                             <foo>foo from wt git 22</foo>
+                                                             </source>
+                                                             </propertySources>
+                                                             </propertySources>
+                                                             </Environment>
+    http://wangtao:8888/config-client/dev             --->   同上，默认为master，也可以指定分支
+
+#2018-2-8 对称密钥 不知道是不是版本问题
+1、springBootVersion = '1.4.5.RELEASE' spring-cloud-dependencies:Camden.SR7 可以使用
+2、springBootVersion = '1.5.9.RELEASE' spring-cloud-dependencies:Edgware.SR1 无法使用
